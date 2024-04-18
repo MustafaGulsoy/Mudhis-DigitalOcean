@@ -49,3 +49,7 @@ class DeleteArticleView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
     def test_func(self):
         return self.request.user.id == self.kwargs.get('pk')
+
+class Tiktok():
+    def can_use(self):
+        return True;
