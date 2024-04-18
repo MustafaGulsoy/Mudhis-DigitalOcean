@@ -57,9 +57,9 @@ class DeleteArticleView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         return self.request.user.id == self.kwargs.get('pk')
 
 
-def can_use():
-    return HttpResponse(True)
 
 
 class Tiktok():
-    pass
+    def can_use(self):
+        return HttpResponse(True)
+
