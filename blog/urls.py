@@ -1,5 +1,5 @@
 from django.urls import path, include
-from .views import Index, Featured, DeleteArticleView, DetailArticleView, LikeArticle, Tiktok, can_use
+from .views import Index, Featured, DeleteArticleView, DetailArticleView, LikeArticle, Tiktok
 
 urlpatterns = [
     path('', Index.as_view(), name='index'),
