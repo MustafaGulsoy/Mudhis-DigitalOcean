@@ -29,8 +29,7 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', get_random_secret_key())
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'False') == 'False'
 
-ALLOWED_HOSTS = {'*'}
-#(os.getenv('DJANGO_ALLOWED_HOSTS','127.0.0.1,localhost,mudhis-backend-y3dxs.ondigitalocean.app').split(','))
+ALLOWED_HOSTS = (os.getenv('DJANGO_ALLOWED_HOSTS','127.0.0.1,localhost,mudhis-backend-y3dxs.ondigitalocean.app').split(','))
 
 # Application definition
 
