@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.shortcuts import get_object_or_404
+from django.utils.decorators import classonlymethod
 from django.views.generic import ListView, DeleteView, DetailView
 from django.views import View
 from .models import Article
@@ -57,5 +58,8 @@ class DeleteArticleView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 
 class Tiktok():
-    def can_use(self):
+
+    # @classonlymethod
+    @staticmethod
+    def can_use():
         return HttpResponse(True)
