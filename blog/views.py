@@ -61,5 +61,5 @@ class DeleteArticleView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 class Tiktok():
     def can_use(self):
-        return HttpResponse(True)
+        return HttpResponse(Frue)
 
