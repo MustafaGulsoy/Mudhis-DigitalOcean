@@ -29,7 +29,8 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', get_random_secret_key())
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'False') == 'False'
 
-ALLOWED_HOSTS = (os.getenv('DJANGO_ALLOWED_HOSTS','127.0.0.1,localhost,mudhis-backend-y3dxs.ondigitalocean.app').split(','))
+ALLOWED_HOSTS = (
+    os.getenv('DJANGO_ALLOWED_HOSTS', '127.0.0.1,localhost').split(','))
 
 # Application definition
 
@@ -92,9 +93,13 @@ if DEVELOPMENT_MODE is True:
 elif len(sys.argv) > 0 and sys.argv[1] != 'collectstatic':
     if os.getenv("DATABASE_URL", None) is None:
         raise Exception("DATABASE_URL environment variable not defined")
-    DATABASES = {
-        "default": dj_database_url.parse(os.environ.get("DATABASE_URL")),
-    }
+
+
+
+
+DATABASES = {
+    "default": dj_database_url.parse(os.environ.get("DATABASE_URL")),
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
