@@ -1,13 +1,13 @@
 from django.shortcuts import render, redirect
 from django.views import View
 from .forms import UserRegisterForm
+from rest_framework.views import APIView
+from .serializers import UserSerializer
+from rest_framework.response import Response
 
-class RegisterView(View):
-    def get(self, request):
-        form = UserRegisterForm()
-        return render(request, 'users/register.html', {'form':form})
+class RegisterView(APIView):
     def post(self, request):
-        form = UserRegisterForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('index')
+        serializer = UserSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data)

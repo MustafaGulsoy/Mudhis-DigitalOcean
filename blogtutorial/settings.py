@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'users'
+
 ]
 
 MIDDLEWARE = [
@@ -84,23 +84,24 @@ WSGI_APPLICATION = 'blogtutorial.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "False") == "True"
-print(os.getenv("DATABASE_URL") is None)
-if DEVELOPMENT_MODE is True:
+if DEVELOPMENT_MODE is True or os.getenv("DATABASE_URL") is None:
     DATABASES = {
         "default": {
-            "ENGINE": "django.db.backends.postreSql",
-            "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'postgres',
+            'USER': 'postgres',
+            'PASSWORD': 'aaaa',
+            'HOST': 'localhost',  # Or your database host
+            'PORT': '5432',  # Or your database port
         }
     }
 
 elif len(sys.argv) > 0 and sys.argv[1] != 'collectstatic':
     if os.getenv("DATABASE_URL", None) is None:
-         raise Exception("DATABASE_URL environment variable not defined")
+        raise Exception("DATABASE_URL environment variable not defined")
     DATABASES = {
         "default": dj_database_url.parse(os.environ.get("DATABASE_URL")),
     }
-
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -145,7 +146,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = 'index'
 
-AUTH_USER_MODEL= 'users.User'
+AUTH_USER_MODEL = 'users.User'
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
 
