@@ -1,19 +1,14 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 
 
-# Create your models here.
-class Child(models.Model):
+class User(AbstractUser):
     name = models.CharField(max_length=255)
+    email = models.CharField(max_length=255,unique=True)
+    password = models.CharField(max_length=255)
+    username = None
 
-
-class Member(models.Model):
-    name = models.CharField(max_length=255)
-    bird_date = models.DateField(auto_now_add=True)
-    sex = models.BooleanField()
-
-    date = models.DateField(auto_now_add=True)
-
-    featured = models.BooleanField(default=False)
-    likes = models.ManyToManyField(Child, related_name='likes')
+    USERNAME_FIELD = email
+    REQUIRED_FIELDS = []
 
 
