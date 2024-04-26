@@ -6,7 +6,7 @@
   </component>
   <component name="DBNavigator.Project.DataEditorManager">
     <record-view-column-sorting-type value="BY_INDEX" />
-    <value-preview-text-wrapping value="true" />
+    <value-preview-text-wrapping value="false" />
     <value-preview-pinned value="false" />
   </component>
   <component name="DBNavigator.Project.DatabaseBrowserManager">
@@ -24,11 +24,7 @@
     <last-used-providers />
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files>
-      <object connection-id="6a9cb163-de01-4cc1-bd2b-539c85ac1fb9" object-ref="schemas/public/tables/users_user" />
-      <object connection-id="6a9cb163-de01-4cc1-bd2b-539c85ac1fb9" object-ref="schemas/public/tables/auth_group_permissions" />
-      <object connection-id="6a9cb163-de01-4cc1-bd2b-539c85ac1fb9" object-ref="schemas/public/tables/auth_group" />
-    </open-files>
+    <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="6a9cb163-de01-4cc1-bd2b-539c85ac1fb9" />
