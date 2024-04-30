@@ -43,6 +43,7 @@ class LoginView(APIView):
 
 class UserView(APIView):
     def get(self, request):
+        print(" ")
         token = request.COOKIES.get('jwt')
 
         if not token:
