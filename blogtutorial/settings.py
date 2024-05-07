@@ -12,13 +12,11 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 
-
 from django.core.management.utils import get_random_secret_key
 
 import os
 import sys
 import dj_database_url
-
 
 from django.conf import settings
 
@@ -94,26 +92,25 @@ WSGI_APPLICATION = 'blogtutorial.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "False") == "True"
-if DEVELOPMENT_MODE is True or os.getenv("DATABASE_URL") is None:
-    DATABASES = {
-        "default": {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'postgres',
-            'USER': 'postgres',
-            'PASSWORD': 'aaaa',
-            'HOST': 'localhost',  # Or your database host
-            'PORT': '5432',  # Or your database port
-        }
+# DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "False") == "True"
+DATABASES = {
+    "default": {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'MustafaGulsoy$mudhis',
+        'USER': 'MustafaGulsoy',
+        'PASSWORD': 'aaaaaaaa',
+        'HOST': 'MustafaGulsoy.mysql.pythonanywhere-services.com',  # Or your database host
+        'PORT': '3306',  # Or your database port
     }
+}
 
-elif len(sys.argv) > 0 and sys.argv[1] != 'collectstatic':
-    if os.getenv("DATABASE_URL", None) is None:
-        raise Exception("DATABASE_URL environment variable not defined")
-
-    DATABASES = {
-        "default": dj_database_url.parse(os.environ.get("DATABASE_URL")),
-    }
+# elif len(sys.argv) > 0 and sys.argv[1] != 'collectstatic':
+#     if os.getenv("DATABASE_URL", None) is None:
+#         raise Exception("DATABASE_URL environment variable not defined")
+#
+#     DATABASES = {
+#         "default": dj_database_url.parse(os.environ.get("DATABASE_URL")),
+#     }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
