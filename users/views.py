@@ -2,7 +2,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.exceptions import AuthenticationFailed
 from .serializers import UserSerializer
-from .models import User
+from .models import User, Person
 import jwt, datetime
 
 
@@ -68,3 +68,28 @@ class LogoutView(APIView):
         }
 
         return response
+
+
+class CreateChild(APIView):
+    def post(self,request):
+
+        childs = request.data.get('childs')
+
+        for i in range(len(childs)):
+            child = Person.objects.create()
+            child.sex = request.data.get('sex')
+            child.name = request.data.get('sex')
+            child.surname = request.data.get('sex')
+            child.birth_date = request.data.get(datetime.datetime.now())
+            child.motion_data = {}
+            child.pressure_data = {}
+            Person.save(childs[i])
+class AddChildren(APIView):
+
+    def post(self,request):
+        email = request.data['email']
+        password = request.data.get('password')
+        user = User.objects.filter(email=email).first()
+
+        user.childs.add(request.data.get('child'))
+        user.childs.add

@@ -67,6 +67,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'users.middlewares.TokenMiddleware.TokenMiddleware',
 ]
 
 ROOT_URLCONF = 'blogtutorial.urls'
@@ -92,7 +93,7 @@ WSGI_APPLICATION = 'blogtutorial.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DEVELOPMENT_MODE = True # True For local, false for server
+DEVELOPMENT_MODE = True  # True For local, false for server
 if DEVELOPMENT_MODE:
     DATABASES = {
         "default": {
